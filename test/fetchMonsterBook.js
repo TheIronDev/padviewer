@@ -11,9 +11,9 @@ describe('Fetching Monsters from padx', function() {
 
 	it('should fetch a json list', function(done) {
 
-		fetchMonsters(function(err, result) {
+		fetchMonsters(function(err, monsters) {
 			assert.equal(err, null);
-			assert.equal(result['777'].name, 'Great Tengu');
+			assert.equal(monsters['777'].name, 'Great Tengu');
 			done();
 		});
 	});

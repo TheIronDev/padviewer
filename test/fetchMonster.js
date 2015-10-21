@@ -7,7 +7,7 @@ var assert = require('assert'),
 
 describe('Fetching individual Monster from padx', function() {
 
-	this.timeout(5000);
+	this.timeout(0);
 
 	it('should fetch appropriate data', function(done) {
 
@@ -43,7 +43,7 @@ describe('Fetching individual Monster from padx', function() {
 			}
 		};
 
-		fetchMonster(77, function(err, monster) {
+		fetchMonster(777, function(err, monster) {
 			assert.equal(err, null);
 			assert.deepEqual(monster, expectedOutput);
 			done();

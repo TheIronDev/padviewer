@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm start; webpack --watch",
+    "dev": "webpack --watch",
     "deploy": "NODE_ENV=production webpack -p",
     "start": "node ./bin/www"
   },

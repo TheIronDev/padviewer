@@ -3,7 +3,7 @@
 import fetch from 'isomorphic-fetch';
 
 // Action Constants
-export const ADD_MONSTER = 'ADD_TODO';
+export const ADD_MONSTER = 'ADD_MONSTER';
 export const REMOVE_MONSTER = 'REMOVE_MONSTER';
 export const FETCH_MONSTER_LIST = 'FETCH_MONSTER_LIST';
 export const RECEIVE_MONSTER_LIST = 'RECEIVE_MONSTER_LIST';

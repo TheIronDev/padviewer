@@ -9,14 +9,14 @@ import React from 'react';
 export default React.createClass({
 
 	renderMonsterList() {
-		return this.props.monsterList.list.map((monster) => {
+		return this.props.monsterList.map((monster) => {
 			return (<option>{monster.name}</option>);
 		});
 	},
 
 	render() {
 
-		return (<div>
+		return (<div className="padviewer-addMonster">
 			<div>Add Monster</div>
 			<select>{this.renderMonsterList()}</select>
 

@@ -7,7 +7,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {addMonster, fetchMonsterList} from '../actions.es6';
 
-import AddMonster from './addmonster.jsx'
+import MonsterCompareList from './monsterCompareList.jsx';
+import AddMonster from './addmonster.jsx';
 
 
 
@@ -29,7 +30,8 @@ let App = React.createClass({
 
 	render() {
 		return (<div>
-			<AddMonster addMonster={this.addMonster} monsterList={this.props.monsterList} />
+			<MonsterCompareList monsterList={this.props.monsterCompareList} />
+			<AddMonster addMonster={this.addMonster} monsterList={this.props.monsterList.list} />
 		</div>);
 	}
 });

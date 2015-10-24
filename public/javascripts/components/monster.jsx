@@ -8,8 +8,8 @@ import React from 'react';
 export default React.createClass({
 
 	render() {
-		return (<div>
-			Monster
+		return (<div className="padviewer-monster">
+			Monster {this.props.name}
 		</div>);
 	}
 });

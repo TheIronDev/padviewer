@@ -23,7 +23,7 @@ function monsterCompareList (state = initialCompareListState, action = defaultAc
 
 	switch (action.type) {
 		case ADD_MONSTER:
-			return Object.assign([], state, [].concat(state.monsterCompareList, action.monster));
+			return Object.assign([], state, [].concat(state, action.monster));
 		case REMOVE_MONSTER:
 			return Object.assign([], state, state.filter((monster) => (monster.id !== action.monster.id)));
 		default:
@@ -41,7 +41,7 @@ function monsterList (state = initialListState, action = defaultAction) {
 
 	switch (action.type) {
 		case FETCH_MONSTER_LIST:
-			return Object.assign([], state, [].concat(state.monsterList, action.monsterList));
+			return Object.assign([], state, [].concat(state, action.monsterList));
 		default:
 			return state;
 	}

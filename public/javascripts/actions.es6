@@ -5,6 +5,7 @@ import fetch from 'isomorphic-fetch';
 // Action Constants
 export const ADD_MONSTER = 'ADD_MONSTER';
 export const REMOVE_MONSTER = 'REMOVE_MONSTER';
+export const REQUEST_MONSTER = 'REQUEST_MONSTER';
 export const FETCH_MONSTER_LIST = 'FETCH_MONSTER_LIST';
 export const RECEIVE_MONSTER_LIST = 'RECEIVE_MONSTER_LIST';
 
@@ -20,6 +21,25 @@ export function addMonster(monster) {
 
 export function removeMonster(monster) {
 	return { type: REMOVE_MONSTER, monster: monster };
+}
+
+export function requestMonster() {
+	return { type: REQUEST_MONSTER };
+}
+
+export function fetchMonster(monsterId) {
+
+	return function(dispatch) {
+
+		dispatch(requestMonster());
+
+		return fetch('/padx/' + monsterId)
+			.then(response => response.json())
+			.then(result => {
+
+				dispatch(addMonster(result));
+			});
+	};
 }
 
 /**

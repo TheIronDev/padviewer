@@ -6,9 +6,12 @@
  */
 
 import { combineReducers } from 'redux';
-import { ADD_MONSTER, REMOVE_MONSTER, FETCH_MONSTER_LIST, RECEIVE_MONSTER_LIST} from '../actions.es6';
+import { ADD_MONSTER, REMOVE_MONSTER, FETCH_MONSTER_LIST, RECEIVE_MONSTER_LIST, REQUEST_MONSTER} from '../actions.es6';
 
-const initialCompareListState = [];
+const initialCompareObject = {
+	isFetching: false,
+	list: []
+};
 
 const initialMonsterBook = {
 	isFetching: false,
@@ -19,17 +22,26 @@ const defaultAction = {type: 'no-op'};
 
 /**
  * Monster Compare List Reducer
- * @param {Array} state - Array of "added" monsters
+ * @param {Object} state - Array of "added" monsters
  * @param {Object} action - object that contains an action "type" and "monster"
- * @returns {Array} newState - the next iteration of the "state" with the action applied to it.
+ * @returns {Object} newState - the next iteration of the "state" with the action applied to it.
  */
-function monsterCompareList (state = initialCompareListState, action = defaultAction) {
+function monsterCompareList (state = initialCompareObject, action = defaultAction) {
 
 	switch (action.type) {
+		case REQUEST_MONSTER:
+			return Object.assign({}, state, {
+				isFetching: true
+			});
 		case ADD_MONSTER:
-			return Object.assign([], state, [].concat(state, action.monster));
+			return Object.assign({}, state, {
+				isFetching: false,
+				list: [].concat(state.list, action.monster)
+			});
 		case REMOVE_MONSTER:
-			return Object.assign([], state, state.filter((monster) => (monster.id !== action.monster.id)));
+			return Object.assign({}, state, {
+				list: state.list.filter((monster) => (monster.id !== action.monster.id))
+			});
 		default:
 			return state;
 	}

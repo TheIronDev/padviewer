@@ -11,7 +11,7 @@ export default React.createClass({
 
 	render() {
 		return (<div className="padviewer-monsterWrapper">
-			{this.props.monsterList.map((monsterProps)=> <Monster {...monsterProps} />)}
+			{this.props.monsterList.map((monsterProps)=> <Monster key={monsterProps.id} {...monsterProps} />)}
 		</div>);
 	}
 });

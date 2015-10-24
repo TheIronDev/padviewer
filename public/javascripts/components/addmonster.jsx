@@ -8,9 +8,27 @@ import React from 'react';
 
 export default React.createClass({
 
+	getInitialState() {
+		return {
+			selectedMonsterId: 1
+		}
+	},
+
 	renderMonsterList() {
 		return this.props.monsterList.map((monster) => {
-			return (<option>{monster.name}</option>);
+			return (<option key={monster.id} value={monster.id}>{monster.name}</option>);
+		});
+	},
+
+	addMonster() {
+		let monsterId = this.state.selectedMonsterId;
+		this.props.addMonster(monsterId);
+	},
+
+	updateSelectedMonster(event) {
+		let monsterId = event.target.value;
+		this.setState({
+			selectedMonsterId: monsterId
 		});
 	},
 
@@ -18,9 +36,9 @@ export default React.createClass({
 
 		return (<div className="padviewer-addMonster">
 			<div>Add Monster</div>
-			<select>{this.renderMonsterList()}</select>
+			<select onChange={this.updateSelectedMonster}>{this.renderMonsterList()}</select>
 
-			<button onClick={this.props.addMonster}>Submit</button>
+			<button onClick={this.addMonster}>Submit</button>
 		</div>);
 	}
 });

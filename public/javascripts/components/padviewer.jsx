@@ -4,8 +4,10 @@
  */
 
 import React from 'react';
+import classNames from 'classnames';
+
 import { connect } from 'react-redux';
-import {addMonster, fetchMonsterList} from '../actions.es6';
+import {addMonster, fetchMonsterList, fetchMonster} from '../actions.es6';
 
 import MonsterCompareList from './monsterCompareList.jsx';
 import AddMonster from './addmonster.jsx';
@@ -20,17 +22,18 @@ let App = React.createClass({
 		this.props.dispatch(fetchMonsterList());
 	},
 
-	addMonster() {
-		let demoMonster = {
-			id: 1,
-			name: 'test'
-		};
-		this.props.dispatch(addMonster(demoMonster));
+	addMonster(monsterId) {
+		this.props.dispatch(fetchMonster(monsterId));
 	},
 
 	render() {
-		return (<div>
-			<MonsterCompareList monsterList={this.props.monsterCompareList} />
+
+		let wrapperClass = classNames('padviewer-appWrapper', {
+			isLoading: (this.props.monsterCompareList.isFetching || this.props.monsterList.isFetching )
+		});
+
+		return (<div className={wrapperClass}>
+			<MonsterCompareList monsterList={this.props.monsterCompareList.list} />
 			<AddMonster addMonster={this.addMonster} monsterList={this.props.monsterList.list} />
 		</div>);
 	}

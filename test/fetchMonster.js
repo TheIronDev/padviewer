@@ -12,6 +12,7 @@ describe('Fetching individual Monster from padx', function() {
 	it('should fetch appropriate data', function(done) {
 
 		var expectedOutput = {
+			id: 777,
 			name: 'Great Tengu',
 			type: 'physical',
 			element: 'wood',

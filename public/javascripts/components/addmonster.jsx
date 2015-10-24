@@ -36,7 +36,7 @@ export default React.createClass({
 
 		return (<div className="padviewer-addMonster">
 			<div>Add Monster</div>
-			<select onChange={this.updateSelectedMonster}>{this.renderMonsterList()}</select>
+			<select className="padviewer-addMonster-select" onChange={this.updateSelectedMonster}>{this.renderMonsterList()}</select>
 
 			<button onClick={this.addMonster}>Submit</button>
 		</div>);

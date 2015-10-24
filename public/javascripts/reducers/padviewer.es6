@@ -6,10 +6,14 @@
  */
 
 import { combineReducers } from 'redux';
-import { ADD_MONSTER, REMOVE_MONSTER, FETCH_MONSTER_LIST} from '../actions.es6';
+import { ADD_MONSTER, REMOVE_MONSTER, FETCH_MONSTER_LIST, RECEIVE_MONSTER_LIST} from '../actions.es6';
 
 const initialCompareListState = [];
-const initialListState = [];
+
+const initialMonsterBook = {
+	isFetching: false,
+	list: []
+};
 const defaultAction = {type: 'no-op'};
 
 
@@ -33,15 +37,22 @@ function monsterCompareList (state = initialCompareListState, action = defaultAc
 
 /**
  * Monster List Reducer
- * @param {Array} state - Array of "fetched" monsters
+ * @param {Object} state - Array of "fetched" monsters
  * @param {Object} action - object that contains an action "type" and "monster"
- * @returns {Array} newState - the next iteration of the "state" with the action applied to it.
+ * @returns {Object} newState - the next iteration of the "state" with the action applied to it.
  */
-function monsterList (state = initialListState, action = defaultAction) {
+function monsterList (state = initialMonsterBook, action = defaultAction) {
 
 	switch (action.type) {
 		case FETCH_MONSTER_LIST:
-			return Object.assign([], state, [].concat(state, action.monsterList));
+			return Object.assign({}, state, {
+				isFetching: true
+			});
+		case RECEIVE_MONSTER_LIST:
+			return Object.assign({}, state, {
+				isFetching: false,
+				list: action.monsterList
+			});
 		default:
 			return state;
 	}

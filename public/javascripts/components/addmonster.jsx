@@ -9,7 +9,7 @@ import React from 'react';
 export default React.createClass({
 
 	renderMonsterList() {
-		return this.props.monsterList.map((monster) => {
+		return this.props.monsterList.list.map((monster) => {
 			return (<option>{monster.name}</option>);
 		});
 	},

@@ -13,7 +13,7 @@ describe('Fetching Monsters from padx', function() {
 
 		fetchMonsters(function(err, monsters) {
 			assert.equal(err, null);
-			assert.equal(monsters['777'].name, 'Great Tengu');
+			assert.equal(monsters[776].name, 'Great Tengu');
 			done();
 		});
 	});

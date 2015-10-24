@@ -5,13 +5,19 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {addMonster} from '../actions.es6';
+import {addMonster, fetchMonsterList} from '../actions.es6';
 
 import AddMonster from './addmonster.jsx'
 
 
 
 let App = React.createClass({
+
+	componentDidMount() {
+
+		// Component has rendered... lets fetch our monster list
+		this.props.dispatch(fetchMonsterList());
+	},
 
 	addMonster() {
 		let demoMonster = {

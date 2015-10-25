@@ -55,6 +55,7 @@ describe('Fetching individual Monster from padx', function() {
 		fetchMonster(310, function(err, monster) {
 			assert.equal(err, null);
 			assert.equal(monster.element, 'fire / water');
+			assert.equal(monster.type, 'physical / devil');
 			done();
 		});
 	});

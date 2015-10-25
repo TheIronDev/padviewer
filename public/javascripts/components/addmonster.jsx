@@ -20,7 +20,11 @@ export default React.createClass({
 		});
 	},
 
-	addMonster() {
+	addMonster(event) {
+		if (event) {
+			event.preventDefault();
+		}
+
 		let monsterId = this.state.selectedMonsterId;
 		this.props.addMonster(monsterId);
 	},
@@ -32,13 +36,25 @@ export default React.createClass({
 		});
 	},
 
+	updateSelectedMonsterById(event) {
+		let monsterId = event.target.value;
+		this.setState({
+			selectedMonsterId: monsterId
+		});
+	},
+
 	render() {
 
 		return (<div className="padviewer-addMonster">
-			<div>Add Monster</div>
-			<select className="padviewer-addMonster-select" onChange={this.updateSelectedMonster}>{this.renderMonsterList()}</select>
 
-			<button onClick={this.addMonster}>Submit</button>
+			<div>Add Monster</div>
+			<form onSubmit={this.addMonster}>
+				<select className="padviewer-addMonster-select" onChange={this.updateSelectedMonster} value={this.state.selectedMonsterId}>
+						{this.renderMonsterList()}
+				</select>
+				<input type="number" value={this.state.selectedMonsterId} onChange={this.updateSelectedMonsterById} />
+				<button onClick={this.addMonster}>Submit</button>
+			</form>
 		</div>);
 	}
 });

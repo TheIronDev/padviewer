@@ -50,4 +50,12 @@ describe('Fetching individual Monster from padx', function() {
 			done();
 		});
 	});
+
+	it('should fetch elements from dual-element monsters', function(done) {
+		fetchMonster(310, function(err, monster) {
+			assert.equal(err, null);
+			assert.equal(monster.element, 'fire / water');
+			done();
+		});
+	});
 });

@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Puzzle and Dragons Viewer</title>
   </head>
   <body>
 
     <div class="padviewer-container">
         <nav class="padviewer-navigation">
             <h1>PAD Viewer</h1>
+            <a href="https://github.com/TheIronDeveloper/padviewer" alt="Github Page" class="padviewer-navigation-githubAnchor">
+                <i class="mega-octicon octicon-mark-github"></i>
+            </a>
         </nav>
 
         <main id="padviewerApp" class="padviewer-app"></main>
+        <footer class="padviewer-footer">
+            Puzzle & Dragons is trademarked by GungHo Online Entertainment, Inc.<br />
+            All data on this site originates from <a href="http://puzzledragonx.com/">puzzledragonx.com</a>
+        </footer>
     </div>
-    <script src="/build.js"></script>
+    <script src="/bundle/app.js"></script>
   </body>
 </html>

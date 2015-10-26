@@ -18,9 +18,16 @@ export default React.createClass({
 
 	renderRangeRows() {
 		let props = this.props;
+		let noLevelRange = props.level.min === props.level.max;
+
 		return rangedRows.map((row) => {
 			if (props[row.key]) {
-				return (<tr><td>{row.text}</td><td>{props[row.key].min}</td><td>{props[row.key].max}</td></tr>)
+				let lastRow = noLevelRange ? '' : (<td>{props[row.key].max}</td>);
+				return (<tr>
+					<td>{row.text}</td>
+					<td>{props[row.key].min}</td>
+					{lastRow}
+				</tr>);
 			}
 			return '';
 		});
@@ -28,18 +35,19 @@ export default React.createClass({
 
 	render() {
 
-		let props = this.props || {};
+		let props = this.props || {},
+			moreInfoLink = `http://puzzledragonx.com/en/monster.asp?n=${props.id}`;
 
 		return (<div className="padviewer-monster">
-			<h3>{props.name}</h3>
+			<h3 className="padviewer-monster-name">{props.name}</h3>
 			<table className="padviewer-monster-table">
-				<tr><td>Type:</td><td>{props.type}</td></tr>
-				<tr><td>Element:</td><td>{props.element}</td></tr>
-				<tr><td>Cost:</td><td>{props.cost}</td></tr>
-				<tr><td>Exp To Max:</td><td>{props.expToMax}</td></tr>
+				<tr><td>Type:</td><td colSpan="2">{props.type}</td></tr>
+				<tr><td>Element:</td><td colSpan="2">{props.element}</td></tr>
+				<tr><td>Cost:</td><td colSpan="2">{props.cost}</td></tr>
+				<tr><td>Exp To Max:</td><td colSpan="2">{props.expToMax}</td></tr>
 				{this.renderRangeRows()}
 			</table>
-
+			<a href={moreInfoLink} target="_blank" className="padviewer-monster-moreInfoLink">More Info (and source)</a>
 		</div>);
 	}
 });

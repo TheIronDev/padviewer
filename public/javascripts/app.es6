@@ -3,7 +3,8 @@
 import 'babel-core/polyfill';
 
 // Loading Styles
-require('../stylesheets/style.less');
+import '../stylesheets/octicons.less';
+import '../stylesheets/style.less';
 
 // App Dependencies
 import React from 'react';

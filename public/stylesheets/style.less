@@ -10,13 +10,19 @@ h3 {text-align: center}
 
 .padviewer-container {
   background: #fff;
-  min-height: 500px;
   margin: 1em;
   padding: 1em;
 }
 
 .padviewer-navigation {
   border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.padviewer-navigation-githubAnchor {
+  position: absolute;
+  right: 0;
+  top: -0.5em;
 }
 
 .padviewer-appWrapper {
@@ -29,27 +35,73 @@ h3 {text-align: center}
   display: inline;
 }
 
+.padviewer-monster-name {
+  white-space: nowrap;
+}
+
 .padviewer-monster-table {
+  border-collapse: collapse;
   width: 100%;
+}
+
+.padviewer-monster-table tr:nth-child(2n-1) {
+  background: #efefef;
+}
+
+.padviewer-monster-table td {
+  padding: 2px 5px;
+}
+
+.padviewer-monster-moreInfoLink {
+  display: block;
+  text-align: center;
 }
 
 
 .padviewer-monster,
 .padviewer-addMonster {
   border: 1px solid #ccc;
-  display: block;
   float: left;
 
   height: 20rem;
   width: 17rem;
-  margin: 0.5em;
-  padding: 0.5em;
+  margin: 1em 0.5em;
+}
+
+.padviewer-monster {
+  display: block;
+  overflow: hidden;
 }
 
 .padviewer-addMonster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
+.padviewer-addMonster-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+.padviewer-addMonster-btn:hover {
+  color: #1b5e9d;
+}
+
 .padviewer-addMonster-select {
-  max-width: 100%;
+  max-width: 12rem;
+  margin-bottom: 1rem;
+}
+
+.padviewer-addMonster-idInput {
+  margin-bottom: 1rem;
+}
+
+.padviewer-footer {
+  border-top: 1px solid #ccc;
+  clear: both;
+  padding: 0.5rem;
 }

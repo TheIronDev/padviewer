@@ -47,13 +47,13 @@ export default React.createClass({
 
 		return (<div className="padviewer-addMonster">
 
-			<div>Add Monster</div>
+			<h2>Add Monster</h2>
 			<form onSubmit={this.addMonster}>
 				<select className="padviewer-addMonster-select" onChange={this.updateSelectedMonster} value={this.state.selectedMonsterId}>
 						{this.renderMonsterList()}
 				</select>
-				<input type="number" value={this.state.selectedMonsterId} onChange={this.updateSelectedMonsterById} />
-				<button onClick={this.addMonster}>Submit</button>
+				<input type="number" className="padviewer-addMonster-idInput" value={this.state.selectedMonsterId} onChange={this.updateSelectedMonsterById} />
+				<button className="padviewer-addMonster-btn mega-octicon octicon-diff-added" onClick={this.addMonster}></button>
 			</form>
 		</div>);
 	}

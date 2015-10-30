@@ -17,6 +17,8 @@ describe('Fetching individual Monster from padx', function() {
 			type: 'physical',
 			element: 'wood',
 			cost: 20,
+			skill: 'Switch places with leader card. Use again to switch back.',
+			leaderSkill: 'While your HP is 50% or above, a single hit that normally kills you will instead leave you with 1 HP. For the consecutive hits, this skill will only affect the first hit.',
 			expToMax: 707107,
 			level: {
 				min: 1,
